@@ -6,6 +6,16 @@
     <select id="getSampleList" resultType="SampleVO">
         SELECT id, name, addr, cell_phone
         FROM sample
+        WHERE 1 = 1
+        <if test="name != null">
+            AND name LIKE CONCAT('%', #{name}, '%')
+        </if>
+        <if test="addr != null">
+            AND addr LIKE CONCAT('%', #{addr}, '%')
+        </if>
+        <if test="cellPhone != null">
+            AND cell_phone LIKE CONCAT('%', #{cellPhone}, '%')
+        </if>
         ORDER BY 1
     </select>
 </mapper>

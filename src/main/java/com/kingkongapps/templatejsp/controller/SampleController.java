@@ -54,4 +54,18 @@ public class SampleController {
         return "/sample/sample_jsp";
     }
 
+
+    @GetMapping(value = "/sample_jsp_gpt")
+    public String getSampleJspGPT(Model model) {
+        log.debug("getSampleJspGPT...");
+
+        Date today = new Date();
+        //
+        List<SampleVO> list = sampleService.getSampleList(new SampleVO());
+
+        model.addAttribute("serverTime", today );
+        model.addAttribute("sampleList", list);
+
+        return "/sample/sample_jsp_gpt";
+    }
 }
